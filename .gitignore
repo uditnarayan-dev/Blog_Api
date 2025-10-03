@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+env/
+
+# Django
+*.sqlite3
+/staticfiles/
+/db.sqlite3
+
+# Local env files
+.env
+
+# Logs
+*.log
+
+# Ignore plan file
+plan.txt
+
+# Ignore IDE/editor files
+.vscode/
+.idea/
+*.swp
