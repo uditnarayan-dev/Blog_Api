@@ -8,9 +8,10 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install -y python3-pip python3-venv libpq-dev postgresql postgresql-contrib nginx
 
 # Create project dir
-cd /home/ubuntu
-git clone https://github.com/uditnarayan-dev/Blog_Api.git blogapi
-cd blogapi
+cd /home/ubuntu/projects
+git clone https://github.com/uditnarayan-dev/Blog_Api.git
+cd Blog_Api
+
 
 # Setup virtualenv
 python3 -m venv venv

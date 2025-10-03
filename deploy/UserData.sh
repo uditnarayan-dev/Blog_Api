@@ -6,8 +6,9 @@ set -e
 sudo apt update && sudo apt install -y git
 
 # Clone repo
-cd /home/ubuntu
-git clone https://github.com/uditnarayan-dev/Blog_Api.git blogapi
+cd /home/ubuntu/projects
+git clone https://github.com/uditnarayan-dev/Blog_Api.git
+
 
 # Run setup
 cd blogapi/deploy/scripts
