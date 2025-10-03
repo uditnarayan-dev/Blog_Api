@@ -1,0 +1,14 @@
+[Unit]
+Description=Gunicorn service for blogapi Django project
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/blogapi
+ExecStart=/home/ubuntu/blogapi/venv/bin/gunicorn --access-logfile - --workers 3 --bind unix:/home/ubuntu/blogapi/blogapi.sock blogapi.wsgi:application
+
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
