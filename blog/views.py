@@ -56,7 +56,7 @@ class TagModelViewset(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated, ReadOnlyForNormalUsers]
 
 
-
+@csrf_exempt
 @api_view(["POST"])
 def signup(request):
     username = request.data.get("username")

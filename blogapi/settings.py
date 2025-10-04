@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-jqghh2gbn@)z*f-$on6lf=4uu4n3v#zsz=05)+=m!to-#fy3b0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['13.62.47.180']
+ALLOWED_HOSTS = ['3.110.46.25']
 
 
 # Application definition
@@ -87,7 +87,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'blogapi_db',        # database you created
-        'USER': 'blogapiuser',       # PostgreSQL user
+        'USER': 'blogapi_user',       # PostgreSQL user
         'PASSWORD': 'Udit@70777',    # PostgreSQL password
         'HOST': 'localhost',         # PostgreSQL runs on same server
         'PORT': '5432',
