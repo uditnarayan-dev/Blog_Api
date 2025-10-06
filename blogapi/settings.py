@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-jqghh2gbn@)z*f-$on6lf=4uu4n3v#zsz=05)+=m!to-#fy3b0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['3.110.46.25']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'blog',
     'corsheaders',
+    'whitenoise.runserver_nostatic',
 ]
 
 MIDDLEWARE = [
@@ -51,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'blogapi.urls'
@@ -76,23 +78,29 @@ WSGI_APPLICATION = 'blogapi.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+#Production database Database
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'udit004$blogapi_db',       # database you just created
+#         'USER': 'udit004',                  # your PythonAnywhere username
+#         'PASSWORD': 'Udit@70777',           # MySQL password you set
+#         'HOST': 'udit004.mysql.pythonanywhere-services.com',
+#         'PORT': '3306',
 #     }
 # }
-
+#Testing Database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'blogapi_db',        # database you created
-        'USER': 'blogapi_user',       # PostgreSQL user
-        'PASSWORD': 'Udit@70777',    # PostgreSQL password
-        'HOST': 'localhost',         # PostgreSQL runs on same server
-        'PORT': '5432',
+        'NAME': 'BlogApi_db',
+        'USER': 'postgres',
+        'PASSWORD': 'root',
+        'HOST': 'localhost',
+        'PORT': '5432',  # default PostgreSQL port
     }
 }
+
 
 
 

@@ -15,34 +15,41 @@ from rest_framework.permissions import BasePermission, SAFE_METHODS, IsAuthentic
 class PostModelViewset(viewsets.ModelViewSet):
     # queryset = Post.objects.all()
     serializer_class = PostSerializer
-#Authentication & Authorization
-    authentication_classes =[JWTAuthentication]
-    permission_classes = [IsAuthenticated]
+    #Authentication & Authorization
+    # authentication_classes =[JWTAuthentication]
+    # permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         user = self.request.user
-        if user.is_staff:  # admins see all posts
+        if user.is_staff:
             return Post.objects.all()
-        # normal users see only their own posts
-        return Post.objects.filter(author=user)
+        if user.is_authenticated:
+            return Post.objects.filter(author=user)
+        # Unauthenticated users see all posts
+        return Post.objects.all()
 
     def perform_create(self, serializer):
-        # Automatically assign the logged-in user as author
-        serializer.save(author=self.request.user)
+        user = self.request.user
+        if user.is_authenticated:
+            serializer.save(author=user)
+        else:
+            # Assign the placeholder user
+            unauth_user = User.objects.get(username="Unauthenticated_user") #password for Unauthenticated_user = root
+            serializer.save(author=unauth_user)
 
 # Custom permission: allow read-only for normal users
-class ReadOnlyForNormalUsers(BasePermission):
-    def has_permission(self, request, view):
-        if request.method in SAFE_METHODS:  # GET, HEAD, OPTIONS
-            return True  # everyone can read
-        return request.user.is_staff  # only admins can write
+# class ReadOnlyForNormalUsers(BasePermission):
+#     def has_permission(self, request, view):
+#         if request.method in SAFE_METHODS:  # GET, HEAD, OPTIONS
+#             return True  # everyone can read
+#         return request.user.is_staff  # only admins can write
 
 class CategoryModelViewset(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
 
-    authentication_classes =[JWTAuthentication]
-    permission_classes = [IsAuthenticated, ReadOnlyForNormalUsers]
+    # authentication_classes =[JWTAuthentication]
+    # permission_classes = [IsAuthenticated, ReadOnlyForNormalUsers]
     # def get_permissions(self):
     #     if self.request.method in ['GET', 'HEAD', 'OPTIONS']:
     #         return [IsAuthenticated()]  # normal users can view
@@ -52,8 +59,8 @@ class TagModelViewset(viewsets.ModelViewSet):
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
 
-    authentication_classes =[JWTAuthentication]
-    permission_classes = [IsAuthenticated, ReadOnlyForNormalUsers]
+    # authentication_classes =[JWTAuthentication]
+    # permission_classes = [IsAuthenticated, ReadOnlyForNormalUsers]
 
 
 @csrf_exempt

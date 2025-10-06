@@ -3,7 +3,7 @@ let refreshToken = '';
 let categories = [];
 let tags = [];
 
-const API_BASE = "http://13.62.47.180:8000/";  // your live server
+const API_BASE = "http://127.0.0.1:8000/";  // your live server
 
 // ----- LOGIN -----
 async function login() {

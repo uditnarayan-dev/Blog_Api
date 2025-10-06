@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Blog API</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; }
+        h1 { color: #2c3e50; }
+        ul { list-style-type: none; padding-left: 0; }
+        li { margin-bottom: 10px; }
+        a { text-decoration: none; color: #2980b9; font-weight: bold; }
+        a:hover { text-decoration: underline; }
+        .section { margin-bottom: 30px; }
+        .note { color: #555; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <h1>Welcome to My Blog API</h1>
+    <p>By using this API, You can manage posts, categories, and tags through these endpoints:</p>
+
+    <div class="section">
+        <h2>Posts</h2>
+        <ul>
+            <li><a href="/api/posts/">/api/posts/</a></li>
+        </ul>
+        <p class="note">You can create, retrieve, update, and delete posts via this endpoint.</p>
+    </div>
+    
+    <div class="section">
+        <h2>Categories</h2>
+        <ul>
+            <li><a href="/api/categories/">/api/categories/</a></li>
+        </ul>
+        <p class="note">You can create, retrieve, update, and delete categories.</p>
+    </div>
+
+    <div class="section">
+        <h2>Tags</h2>
+        <ul>
+            <li><a href="/api/tags/">/api/tags/</a></li>
+        </ul>
+        <p class="note">You can create, retrieve, update, and delete tags.</p>
+    </div>
+
+    <p>Use these links to explore or interact with the API via your browser or a tool like <strong>Postman</strong>.</p>
+    <p>💡If authentication is enabled, you'll need a JWT token to perform write operations, But now i have disabled <strong>Authentication</strong> for showcase purpose.</p>
+</body>
+</html>
