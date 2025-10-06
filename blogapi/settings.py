@@ -78,7 +78,20 @@ WSGI_APPLICATION = 'blogapi.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-#Production database Database
+#Production database in EC2
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'blogapi_db',       
+        'USER': 'blogapi_user',                 
+        'PASSWORD': 'Udit@70777',           
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+
+
+#Production database Database PA
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
@@ -90,16 +103,16 @@ WSGI_APPLICATION = 'blogapi.wsgi.application'
 #     }
 # }
 #Testing Database
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'BlogApi_db',
-        'USER': 'postgres',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',
-        'PORT': '5432',  # default PostgreSQL port
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'BlogApi_db',
+#         'USER': 'postgres',
+#         'PASSWORD': 'root',
+#         'HOST': 'localhost',
+#         'PORT': '5432',  # default PostgreSQL port
+#     }
+# }
 
 
 
