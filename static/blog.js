@@ -68,7 +68,7 @@ async function signup() {
 async function loadCategories() {
     if (!accessToken) return;
     try {
-        const res = await fetch(`${API_BASE}categories/`, {
+        const res = await fetch(`${API_BASE}api/categories/`, {
             headers: { 'Authorization': 'Bearer ' + accessToken }
         });
         categories = await res.json();
@@ -89,7 +89,7 @@ async function loadCategories() {
 async function loadTags() {
     if (!accessToken) return;
     try {
-        const res = await fetch(`${API_BASE}tags/`, {
+        const res = await fetch(`${API_BASE}api/tags/`, {
             headers: { 'Authorization': 'Bearer ' + accessToken }
         });
         tags = await res.json();
@@ -110,7 +110,7 @@ async function loadTags() {
 async function fetchPosts() {
     if (!accessToken) { alert('Login first'); return; }
     try {
-        const res = await fetch(`${API_BASE}posts/`, {
+        const res = await fetch(`${API_BASE}api/posts/`, {
             headers: { 'Authorization': 'Bearer ' + accessToken }
         });
         const posts = await res.json();
@@ -151,7 +151,7 @@ async function createPost() {
     const status = document.getElementById('newStatus').value;
 
     try {
-        const res = await fetch(`${API_BASE}posts/`, {
+        const res = await fetch(`${API_BASE}api/posts/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -177,7 +177,7 @@ async function editPost(id) {
     if (!newTitle) return;
 
     try {
-        const res = await fetch(`${API_BASE}posts/${id}/`, {
+        const res = await fetch(`${API_BASE}api/posts/${id}/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -200,7 +200,7 @@ async function deletePost(id) {
     if (!confirm('Delete post ' + id + '?')) return;
 
     try {
-        const res = await fetch(`${API_BASE}posts/${id}/`, {
+        const res = await fetch(`${API_BASE}api/posts/${id}/`, {
             method: 'DELETE',
             headers: { 'Authorization': 'Bearer ' + accessToken }
         });

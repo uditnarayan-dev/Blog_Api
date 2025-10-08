@@ -10,20 +10,18 @@ from .serializer import PostSerializer, CategorySerializer, TagSerializer
 
 from rest_framework.authentication import BasicAuthentication
 from rest_framework_simplejwt.authentication import JWTAuthentication
-from rest_framework.permissions import BasePermission, SAFE_METHODS, IsAuthenticated, IsAdminUser
+from rest_framework.permissions import BasePermission, SAFE_METHODS, IsAuthenticated, IsAdminUser, AllowAny
 
 class PostModelViewset(viewsets.ModelViewSet):
     # queryset = Post.objects.all()
     serializer_class = PostSerializer
     #Authentication & Authorization
-    # authentication_classes =[JWTAuthentication]
-    # permission_classes = [IsAuthenticated]
+    authentication_classes =[JWTAuthentication]
+    permission_classes = [AllowAny]
 
     def get_queryset(self):
         user = self.request.user
-        if user.is_staff:
-            return Post.objects.all()
-        if user.is_authenticated:
+        if user and user.is_authenticated:
             return Post.objects.filter(author=user)
         # Unauthenticated users see all posts
         return Post.objects.all()
@@ -47,6 +45,7 @@ class PostModelViewset(viewsets.ModelViewSet):
 class CategoryModelViewset(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+    permission_classes = [AllowAny]
 
     # authentication_classes =[JWTAuthentication]
     # permission_classes = [IsAuthenticated, ReadOnlyForNormalUsers]
@@ -58,6 +57,7 @@ class CategoryModelViewset(viewsets.ModelViewSet):
 class TagModelViewset(viewsets.ModelViewSet):
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
+    permission_classes = [AllowAny]
 
     # authentication_classes =[JWTAuthentication]
     # permission_classes = [IsAuthenticated, ReadOnlyForNormalUsers]
