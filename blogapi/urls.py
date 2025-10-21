@@ -6,8 +6,8 @@ from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView, TokenVerifyView
 from django.shortcuts import render
 
-from django.conf import settings # new
-from  django.conf.urls.static import static #new
+from django.conf import settings 
+from  django.conf.urls.static import static 
 
 
 router = DefaultRouter()
@@ -22,7 +22,7 @@ def blog_frontend(request):
 
 # nice landing page
 def api_landing(request):
-    return render(request, "api_landing.html")  # we'll create this template
+    return render(request, "api_landing.html")  
 
 urlpatterns = [
     path('admin/', admin.site.urls),

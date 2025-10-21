@@ -28,7 +28,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'blog',
-    'corsheaders',
     'whitenoise.runserver_nostatic',
 ]
 
@@ -40,7 +39,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
@@ -68,18 +66,28 @@ WSGI_APPLICATION = 'blogapi.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 #Production database in EC2
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'blogapi_db',       
+#         'USER': 'blogapi_user',                 
+#         'PASSWORD': 'Udit@70777',           
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+
+#Testing Database(Local)
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'blogapi_db',       
-        'USER': 'blogapi_user',                 
-        'PASSWORD': 'Udit@70777',           
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'BlogApi_db',
+        'USER': 'postgres',
+        'PASSWORD': 'root',
         'HOST': 'localhost',
-        'PORT': '5432',
+        'PORT': '5432',  # default PostgreSQL port
     }
 }
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
