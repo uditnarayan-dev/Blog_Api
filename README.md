@@ -20,9 +20,7 @@ A RESTful API for managing **blog posts, categories, and tags**, built using **D
 | Tags Support                             | ✅     |
 | Only Owners Can Edit/Delete Their Posts  | ✅     |
 | Permissions & Authentication             | ✅     |
-| Pagination                               | ❌     |
-| Search / Filtering                       | ❌     |
-| API Documentation (Swagger/Postman)      | ❌ (Planned) |
+
 
 ---
 
